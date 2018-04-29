@@ -4,8 +4,10 @@
   "description": "Test winston logging with spies",
   "main": "index.js",
   "scripts": {
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
     "lint": "populist index.js",
     "pretest": "npm run lint",
+    "precoveralls": "npm run report",
     "test": "nyc mocha test.js",
     "report": "nyc report --reporter=lcov"
   },
@@ -33,6 +35,7 @@
   "devDependencies": {
     "abstract-winston-transport": "^0.5.1",
     "assume": "^2.0.1",
+    "coveralls": "^3.0.0",
     "eslint-config-populist": "^4.1.0",
     "mocha": "^5.1.1",
     "nyc": "^11.7.1"

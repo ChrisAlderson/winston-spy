@@ -13,7 +13,10 @@ script:
   - npm i --no-save winston@next sinon
   - npm test
 #  - tsc --version ; tsc -p test
-#
+
+after_success:
+  - npm run coveralls
+  
 # notifications:
 #   email:
 #     - travis@nodejitsu.com
