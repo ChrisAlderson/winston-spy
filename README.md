@@ -5,14 +5,14 @@
 [![Dependency Status][david-image]][david-url]
 [![devDependency Status][dev-david-image]][dev-david-url]
 
-[travis-url]: https://travis-ci.org/ChrisAlderson/winston-spu
-[travis-image]: https://travis-ci.org/ChrisAlderson/winston-spu.svg?branch=master
-[coverage-url]: https://coveralls.io/github/ChrisAlderson/winston-spu?branch=master
-[coverage-image]: https://coveralls.io/repos/github/ChrisAlderson/winston-spu/badge.svg?branch=master
-[david-url]: https://david-dm.org/ChrisAlderson/winston-spu
-[david-image]: https://david-dm.org/ChrisAlderson/winston-spu.svg
-[dev-david-url]: https://david-dm.org/ChrisAlderson/winston-spu?type=dev
-[dev-david-image]: https://david-dm.org/ChrisAlderson/winston-spu/dev-status.svg
+[travis-url]: https://travis-ci.org/ChrisAlderson/winston-spy
+[travis-image]: https://travis-ci.org/ChrisAlderson/winston-spy.svg?branch=master
+[coverage-url]: https://coveralls.io/github/ChrisAlderson/winston-spy?branch=master
+[coverage-image]: https://coveralls.io/repos/github/ChrisAlderson/winston-spy/badge.svg?branch=master
+[david-url]: https://david-dm.org/ChrisAlderson/winston-spy
+[david-image]: https://david-dm.org/ChrisAlderson/winston-spy.svg
+[dev-david-url]: https://david-dm.org/ChrisAlderson/winston-spy?type=dev
+[dev-david-image]: https://david-dm.org/ChrisAlderson/winston-spy/dev-status.svg
 
 
 This tiny module defines a winston transport that can be used to test winston
