@@ -21,7 +21,7 @@ logging with spies.
 ## Installation
 
 ```bash
- $ npm install --save-dev winston-spy sinon
+ $ npm install --save-dev @chrisalderson/winston-spy sinon
  $ npm install --save winston@next # If you haven't already ;)
 ```
 

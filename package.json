@@ -1,5 +1,5 @@
 {
-  "name": "winston-spy",
+  "name": "@chrisalderson/winston-spy",
   "version": "1.0.0",
   "description": "Test winston logging with spies",
   "main": "index.js",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:manuelcabral/winston-spy.git"
+    "url": "https://github.com/ChrisAlderson/winston-spy.git"
   },
   "keywords": [
     "winston",
@@ -22,6 +22,12 @@
     "spies"
   ],
   "author": "Manuel Cabral (m.cabral@digisfera.pt)",
+  "contributors": [
+    {
+      "name": "Chris Alderson",
+      "url": "https://github.com/ChrisAlderson"
+    }
+  ],
   "license": "BSD",
   "dependencies": {
     "winston-transport": "^3.2.1"
@@ -39,5 +45,11 @@
     "eslint-config-populist": "^4.1.0",
     "mocha": "^5.1.1",
     "nyc": "^11.7.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=6.3.0"
   }
 }
