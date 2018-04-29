@@ -10,6 +10,7 @@ before_install:
 #   - travis_retry npm install typescript
 
 script:
+  - npm i --no-save winston@next sinon
   - npm test
 #  - tsc --version ; tsc -p test
 #
