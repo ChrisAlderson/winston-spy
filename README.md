@@ -1,31 +1,101 @@
 # winston-spy
 
-This tiny module defines a winston transport that can be used to test winston logging with spies.
+[![Build Status][travis-image]][travis-url]
+[![Coverage Status][coverage-image]][coverage-url]
+[![Dependency Status][david-image]][david-url]
+[![devDependency Status][dev-david-image]][dev-david-url]
 
-# Preparations
+[travis-url]: https://travis-ci.org/ChrisAlderson/winston-spu
+[travis-image]: https://travis-ci.org/ChrisAlderson/winston-spu.svg?branch=master
+[coverage-url]: https://coveralls.io/github/ChrisAlderson/winston-spu?branch=master
+[coverage-image]: https://coveralls.io/repos/github/ChrisAlderson/winston-spu/badge.svg?branch=master
+[david-url]: https://david-dm.org/ChrisAlderson/winston-spu
+[david-image]: https://david-dm.org/ChrisAlderson/winston-spu.svg
+[dev-david-url]: https://david-dm.org/ChrisAlderson/winston-spu?type=dev
+[dev-david-image]: https://david-dm.org/ChrisAlderson/winston-spu/dev-status.svg
 
-You do have to put the winston dependency into your `package.json`. winston-spy will not work correctly without this dependency in your `package.json`.
-This is due to the module caching caveats of the nodejs module loading. winston-spy does not install a dependency to winston, this makes sure, that
-winston-spy is using the same module as your application (see also Modules Loading from Node Modules folders).
 
-Otherwise the used winston module would be another file and therefor it would not be the cached one used by your application and
-therefor the SpyLogger could not be as easily used in your application.
+This tiny module defines a winston transport that can be used to test winston
+logging with spies.
 
-# Usage
+## Installation
 
-Pass a function to the transport as the `spy` option. This function will be called whenever `winston.log()` is called.
+```bash
+ $ npm install --save-dev winston-spy sinon
+ $ npm install --save winston@next # If you haven't already ;)
+```
 
-# Example
+## Usage
 
-    var winston = require('winston');
-    var sinon = require('sinon');
-    var spyLogger = require('winston-spy');
+Pass a function to the transport as the `spy` option. This function will be
+called whenever `winston.log()` is called.
 
-    var spy = sinon.spy();
+```js
+'use strict';
 
-    winston.remove(winston.transports.Console);
-    winston.add(winston.transports.SpyLogger, { spy: spy });
+const winston = require('winston');
 
-    winston.log('info', testMessage, testMeta);
-    assert(spy.calledOnce);
-    assert(spy.calledWith('info', testMessage, testMeta));
+// Initialize the transport.
+const spyTransport = new winston.transports.SpyTransport();
+// Or setup your own spy and pass it down to the constructor like this:
+// const spyTransport = new winston.transports.SpyTransport({
+//   spy: require('sinon').spy()
+// });
+
+// Add the transport the the default winston logger. Or a logger created with
+// `winston.createLogger`.
+winston.add(spyYransport);
+
+// Access the `spy` via:
+spyTransport.spy
+````
+
+## Example
+
+Here is an example of how to use the `SpyTransport` in a test-case with
+[`mocha`](https://github.com/mochajs/mocha).
+
+```js
+'use strict';
+
+const sinon = require('sinon');
+const SpyTransport = require('winston-spy');
+const winston = require('winston');
+
+describe('SpyTransport', () => {
+  let consoleTransport;
+  let transport;
+
+  before(() => {
+    consoleTransport = new winston.transports.Console({
+      silent: true
+    });
+    transport = new winston.transports.SpyTransport({ spy });
+
+    // This example uses the default logger of winston, but you can also use
+    // your own configured logger with `winston.createLogger`.
+    winston.add(consoleTransport);
+    winston.add(spyTransport);
+  });
+
+  it('should call spy', () => {
+    const info = {
+      message: 'foo',
+      level: 'info'
+    };
+    winston.log(info);
+
+    assume(spy.calledOnce).true();
+    assume(.spy.calledWith(info)).true();
+
+    // Or with the default spy of the `SpyTransport` instance.
+    // assume(spyTransport.spy.calledOnce).true();
+    // assume(spyTransport.spy.calledWith(info)).true();
+  });
+
+  after(() => {
+    winston.remove(consoleTransport);
+    winston.remove(spyTransport);
+  });
+});
+```

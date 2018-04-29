@@ -1,10 +1,13 @@
 {
   "name": "winston-spy",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "Test winston logging with spies",
-  "main": "src/winston-spy.js",
+  "main": "index.js",
   "scripts": {
-    "test": "mocha test/winston-spy.js"
+    "lint": "populist index.js",
+    "pretest": "npm run lint",
+    "test": "nyc mocha test.js",
+    "report": "nyc report --reporter=lcov"
   },
   "repository": {
     "type": "git",
@@ -18,9 +21,20 @@
   ],
   "author": "Manuel Cabral (m.cabral@digisfera.pt)",
   "license": "BSD",
-  "dependencies": {},
+  "dependencies": {
+    "winston-transport": "^3.2.1"
+  },
+  "peerDependencies": {
+    "winston": "^3.0.0-rc5"
+  },
+  "peerDevDependencies": {
+    "sinon": "^1.6.0"
+  },
   "devDependencies": {
-    "sinon": "~1.6.0",
-    "mocha": "~1.8.2"
+    "abstract-winston-transport": "^0.5.1",
+    "assume": "^2.0.1",
+    "eslint-config-populist": "^4.1.0",
+    "mocha": "^5.1.1",
+    "nyc": "^11.7.1"
   }
 }
