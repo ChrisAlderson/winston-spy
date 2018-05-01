@@ -1,6 +1,6 @@
 {
   "name": "@chrisalderson/winston-spy",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Test winston logging with spies",
   "main": "index.js",
   "scripts": {
