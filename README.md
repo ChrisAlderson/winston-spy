@@ -44,7 +44,7 @@ const spyTransport = new winston.transports.SpyTransport();
 
 // Add the transport the the default winston logger. Or a logger created with
 // `winston.createLogger`.
-winston.add(spyYransport);
+winston.add(spyTransport);
 
 // Access the `spy` via:
 spyTransport.spy
