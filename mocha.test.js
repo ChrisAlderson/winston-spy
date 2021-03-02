@@ -4,7 +4,7 @@ const abstractWinstonTransport = require('abstract-winston-transport');
 const assume = require('assume');
 const winston = require('winston');
 const sinon = require('sinon');
-const SpyTransport = require('./');
+const SpyTransport = require('.');
 
 describe('SpyTransport', () => {
   const info = {
@@ -29,7 +29,7 @@ describe('SpyTransport', () => {
   });
 
   describe('abstract-winston-transport', () => {
-    it('should pas abstract-winston-transport tests', () => {
+    it('should pass abstract-winston-transport tests', () => {
       abstractWinstonTransport({
         name: transport.name,
         Transport: SpyTransport
